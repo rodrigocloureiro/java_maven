@@ -1,6 +1,5 @@
 package org.example.core;
 
-import org.example.App;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -11,7 +10,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 
 public class Log {
-    private static final Logger LOGGER = LoggerFactory.getLogger(App.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(Log.class);
 
     private String nickname;
     private Jogo jogo;

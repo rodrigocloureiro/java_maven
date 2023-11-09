@@ -1,6 +1,5 @@
 package org.example.core;
 
-import org.example.App;
 import org.example.exceptions.PlayerNotFoundException;
 import org.example.util.Linha;
 import org.slf4j.Logger;
@@ -18,7 +17,7 @@ import java.util.List;
 import java.util.function.Function;
 
 public class Relatorio {
-    private static final Logger LOGGER = LoggerFactory.getLogger(App.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(Relatorio.class);
 
     private List<Linha> logs;
     private String nickname;

@@ -1,6 +1,5 @@
 package org.example.view;
 
-import org.example.App;
 import org.example.core.*;
 import org.example.exceptions.InvalidChoiceException;
 import org.example.exceptions.PlayerNotFoundException;
@@ -13,7 +12,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Menu {
-    private static final Logger LOGGER = LoggerFactory.getLogger(App.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(Menu.class);
 
     private void exibirOpcoes() {
         LOGGER.info("O que você deseja?");

@@ -1,7 +1,6 @@
 package org.example.core;
 
 import lombok.Getter;
-import org.example.App;
 import org.example.personagens.Personagem;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,7 +9,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Jogo {
-    private static final Logger LOGGER = LoggerFactory.getLogger(App.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(Jogo.class);
 
     @Getter
     private int rodada;
