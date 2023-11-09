@@ -4,17 +4,21 @@ import org.example.exceptions.InvalidChoiceException;
 import org.example.personagens.Personagem;
 import org.example.personagens.monstros.*;
 import org.example.personagens.herois.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
 public class GerenciadorDePersonagens {
+    private static Logger LOGGER = LoggerFactory.getLogger(GerenciadorDePersonagens.class);
+
     private static void exibirOpcoes() {
-        System.out.println("Qual classe de herói deseja jogar?");
-        System.out.println("1- Guerreiro");
-        System.out.println("2- Bárbaro");
-        System.out.println("3- Paladino");
+        LOGGER.info("Qual classe de herói deseja jogar?");
+        LOGGER.info("1- Guerreiro");
+        LOGGER.info("2- Bárbaro");
+        LOGGER.info("3- Paladino");
     }
 
     private static int escolhaHeroi(Scanner sc) {
@@ -28,9 +32,9 @@ public class GerenciadorDePersonagens {
                     throw new InvalidChoiceException("Opção inválida. Tente novamente.");
                 }
             } catch (InvalidChoiceException ex) {
-                System.out.println(ex.getMessage());
+                LOGGER.error(ex.getMessage());
             } catch (InputMismatchException ex) {
-                System.out.println("Informe um valor INTEIRO.");
+                LOGGER.error("Informe um valor INTEIRO.");
             } finally {
                 sc.nextLine(); // limpando o buffer
             }
