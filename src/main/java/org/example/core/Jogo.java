@@ -35,7 +35,7 @@ public class Jogo {
     private void realizarAtaque(Personagem atacante, Personagem defensor) {
         int dano = atacante.calcularDano();
         defensor.receberDano(dano);
-        LOGGER.info("Fator Dano: " + (dano - atacante.getForca()));
+        LOGGER.debug("Fator Dano: " + (dano - atacante.getForca()));
         LOGGER.info("Dano Atacante: " + dano);
     }
 
