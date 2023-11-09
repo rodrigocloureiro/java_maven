@@ -1,5 +1,9 @@
 package org.example.core;
 
+import org.example.App;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -7,6 +11,8 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 
 public class Log {
+    private static final Logger LOGGER = LoggerFactory.getLogger(App.class);
+
     private String nickname;
     private Jogo jogo;
     private Path dir;
@@ -45,7 +51,7 @@ public class Log {
             criarDiretorio();
             escreverLinha(criarArquivo());
         } catch (IOException ex) {
-            System.out.println(ex + " - Erro ao lidar com arquivo.");
+            LOGGER.error(ex + " - Erro ao lidar com arquivo.");
         }
     }
 }
