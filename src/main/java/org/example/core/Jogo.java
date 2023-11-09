@@ -2,11 +2,15 @@ package org.example.core;
 
 import lombok.Getter;
 import org.example.personagens.Personagem;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Jogo {
+    private static final Logger LOGGER = LoggerFactory.getLogger(Jogo.class);
+
     @Getter
     private int rodada;
     @Getter
@@ -31,8 +35,8 @@ public class Jogo {
     private void realizarAtaque(Personagem atacante, Personagem defensor) {
         int dano = atacante.calcularDano();
         defensor.receberDano(dano);
-        System.out.println("Fator Dano: " + (dano - atacante.getForca()));
-        System.out.println("Dano Atacante: " + dano);
+        LOGGER.debug("Fator Dano: " + (dano - atacante.getForca()));
+        LOGGER.info("Dano Atacante: " + dano);
     }
 
     private void realizarRodada() {
@@ -45,46 +49,46 @@ public class Jogo {
             iniciativaMonstro = this.monstro.calcularIniciativa();
         }
 
-        System.out.println("Iniciativa Heroi: " + iniciativaHeroi);
-        System.out.println("Iniciativa Monstro: " + iniciativaMonstro);
+        LOGGER.info("Iniciativa Heroi: " + iniciativaHeroi);
+        LOGGER.info("Iniciativa Monstro: " + iniciativaMonstro);
 
         if (iniciativaHeroi > iniciativaMonstro) {
             atacante = this.heroi;
             defensor = this.monstro;
-            System.out.printf("Heroi (%s) é o atacante\n", atacante);
+            LOGGER.info(String.format("Heroi (%s) é o atacante\n", atacante));
         } else {
             atacante = this.monstro;
             defensor = this.heroi;
-            System.out.printf("Monstro (%s) é o atacante\n", atacante);
+            LOGGER.info(String.format("Monstro (%s) é o atacante\n", atacante));
         }
 
         int fatorAtaque = atacante.calcularFatorAtaque();
         int fatorDefesa = defensor.calcularFatorDefesa();
 
-        System.out.println("Fator de Ataque: " + fatorAtaque);
-        System.out.println("Fator de Defesa: " + fatorDefesa);
+        LOGGER.info("Fator de Ataque: " + fatorAtaque);
+        LOGGER.info("Fator de Defesa: " + fatorDefesa);
 
         if (fatorAtaque > fatorDefesa) {
             this.realizarAtaque(atacante, defensor);
         }
 
-        System.out.printf("Vida Atacante (%s): %d\n", atacante, atacante.getPontosDeVida());
-        System.out.printf("Vida Defensor (%s): %d\n", defensor, defensor.getPontosDeVida());
+        LOGGER.info(String.format("Vida Atacante (%s): %d\n", atacante, atacante.getPontosDeVida()));
+        LOGGER.info(String.format("Vida Defensor (%s): %d\n", defensor, defensor.getPontosDeVida()));
     }
 
     public void jogar() {
         for (this.rodada = 1; this.heroi.getPontosDeVida() > 0 && this.monstro.getPontosDeVida() > 0; this.rodada++) {
-            System.out.printf("\n***** Rodada: %d *****\n\n", this.rodada);
+            LOGGER.info(String.format("***** Rodada: %d *****\n", this.rodada));
             this.realizarRodada();
         }
-        System.out.println("\n<<<<<<<<<<<<<<< BATALHA ENCERRADA >>>>>>>>>>>>>>>\n");
+        LOGGER.info("<<<<<<<<<<<<<<< BATALHA ENCERRADA >>>>>>>>>>>>>>>");
         this.exibirVencedor();
     }
 
     private void exibirVencedor() {
         if (this.heroi.getPontosDeVida() > 0) {
-            System.out.printf("O herói \"%s\" venceu.\n", this.heroi);
+            LOGGER.info(String.format("O herói \"%s\" venceu.", this.heroi));
             this.ganhou = true;
-        } else System.out.printf("O monstro \"%s\" venceu.\n", this.monstro);
+        } else LOGGER.info(String.format("O monstro \"%s\" venceu.", this.monstro));
     }
 }

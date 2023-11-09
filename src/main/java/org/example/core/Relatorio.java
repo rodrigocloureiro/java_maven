@@ -2,6 +2,8 @@ package org.example.core;
 
 import org.example.exceptions.PlayerNotFoundException;
 import org.example.util.Linha;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -15,6 +17,8 @@ import java.util.List;
 import java.util.function.Function;
 
 public class Relatorio {
+    private static final Logger LOGGER = LoggerFactory.getLogger(Relatorio.class);
+
     private List<Linha> logs;
     private String nickname;
 
@@ -133,14 +137,14 @@ public class Relatorio {
     }
 
     public void gerarRelatorio() {
-        System.out.printf("\n<<<<< Relatório: %s >>>>>\n", this.nickname);
-        System.out.printf("Herói mais jogado: %s\n", heroiMaisJogado());
-        System.out.printf("Monstro mais enfrentado: %s\n", monstroMaisEnfrentado());
-        System.out.printf("Pontuação total: %d\n", calcularPontuacao());
-        System.out.printf("Batalha mais longa: %d rodadas\n", batalhaMaisLonga());
-        System.out.printf("Batalha mais curta: %d rodadas\n", batalhaMaisCurta());
-        System.out.printf("Número de partidas: %d\n", this.logs.size());
-        System.out.printf("Número de vitórias: %d\n", numeroVitorias());
-        System.out.printf("Aproveitamento: %.1f%%\n", calcularAproveitamento());
+        LOGGER.info(String.format("<<<<< Relatório: %s >>>>>", this.nickname));
+        LOGGER.info(String.format("Herói mais jogado: %s", heroiMaisJogado()));
+        LOGGER.info(String.format("Monstro mais enfrentado: %s", monstroMaisEnfrentado()));
+        LOGGER.info(String.format("Pontuação total: %d", calcularPontuacao()));
+        LOGGER.info(String.format("Batalha mais longa: %d rodadas", batalhaMaisLonga()));
+        LOGGER.info(String.format("Batalha mais curta: %d rodadas", batalhaMaisCurta()));
+        LOGGER.info(String.format("Número de partidas: %d", this.logs.size()));
+        LOGGER.info(String.format("Número de vitórias: %d", numeroVitorias()));
+        LOGGER.info(String.format("Aproveitamento: %.1f%%", calcularAproveitamento()));
     }
 }

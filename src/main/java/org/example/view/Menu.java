@@ -4,15 +4,19 @@ import org.example.core.*;
 import org.example.exceptions.InvalidChoiceException;
 import org.example.exceptions.PlayerNotFoundException;
 import org.example.personagens.Personagem;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Menu {
+    private static final Logger LOGGER = LoggerFactory.getLogger(Menu.class);
+
     private void exibirOpcoes() {
-        System.out.println("O que você deseja?");
-        System.out.println("1- Jogar\n2- Gerar relatório");
+        LOGGER.info("O que você deseja?");
+        LOGGER.info("1- Jogar | 2- Gerar relatório");
     }
 
     private int escolha(Scanner sc) {
@@ -26,9 +30,9 @@ public class Menu {
                     throw new InvalidChoiceException("Opção inválida. Tente novamente.");
                 }
             } catch (InvalidChoiceException ex) {
-                System.out.println(ex.getMessage());
+                LOGGER.error(ex.getMessage());
             } catch (InputMismatchException ex) {
-                System.out.println("Informe um valor INTEIRO.");
+                LOGGER.error("Informe um valor INTEIRO.");
             } finally {
                 sc.nextLine(); // limpando o buffer
             }
@@ -44,7 +48,7 @@ public class Menu {
             case 1 -> {
                 Personagem heroi = GerenciadorDePersonagens.criarHeroi(sc);
                 Personagem monstro = GerenciadorDePersonagens.criarMonstroAleatorio();
-                System.out.printf("Você está contra o monstro \"%s\"\n", monstro);
+                LOGGER.info(String.format("Você está contra o monstro \"%s\"\n", monstro));
 
                 Jogo jogo = new Jogo(heroi, monstro);
                 jogo.jogar();
@@ -57,7 +61,7 @@ public class Menu {
                     Relatorio gerador = new Relatorio(nickname);
                     gerador.gerarRelatorio();
                 } catch (PlayerNotFoundException | IOException ex) {
-                    System.out.println(ex.getMessage());
+                    LOGGER.error(ex.getMessage());
                     run();
                 }
             }
