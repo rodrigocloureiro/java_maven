@@ -1,11 +1,10 @@
 package org.example;
 
-import org.example.personagens.Personagem;
-import org.example.personagens.herois.Barbaro;
-import org.example.personagens.monstros.Orc;
+
 import org.example.util.Dado;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class DadoTest {
