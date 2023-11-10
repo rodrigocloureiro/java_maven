@@ -1,6 +1,8 @@
 package org.example;
 
 import org.example.personagens.Personagem;
+import org.example.personagens.herois.Barbaro;
+import org.example.personagens.monstros.Orc;
 import org.example.util.Dado;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -9,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class DadoTest {
     @Test
     @DisplayName("Deve testar os dados")
-    public void dado() {
+    public void testaDado() {
         assertTrue(Dado.rolarD2() > 0 && Dado.rolarD2() < 3);
         assertTrue(Dado.rolarD4() > 0 && Dado.rolarD4() < 5);
         assertTrue(Dado.rolarD6() > 0 && Dado.rolarD6() < 7);
