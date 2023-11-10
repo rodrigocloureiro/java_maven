@@ -2,6 +2,10 @@ package org.example;
 
 import org.example.personagens.Personagem;
 import org.example.personagens.herois.Barbaro;
+import org.example.personagens.herois.Guerreiro;
+import org.example.personagens.herois.Paladino;
+import org.example.personagens.monstros.Kobold;
+import org.example.personagens.monstros.MortoVivo;
 import org.example.personagens.monstros.Orc;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -9,6 +13,24 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class PersonagensTest {
+    @Test
+    @DisplayName("Personagem não pode ser null")
+    public void testaPersonagem() {
+        Personagem guerreiro = new Guerreiro(12, 4, 3, 3);
+        Personagem barbaro = new Barbaro(13, 6, 1, 3);
+        Personagem paladino = new Paladino(15, 2, 5, 1);
+        Personagem orc = new Orc(20, 6, 2, 2);
+        Personagem mortoVivo = new MortoVivo(25, 4, 0, 1);
+        Personagem kobold = new Kobold(20, 4, 2, 4);
+
+        assertNotNull(guerreiro);
+        assertNotNull(barbaro);
+        assertNotNull(paladino);
+        assertNotNull(orc);
+        assertNotNull(mortoVivo);
+        assertNotNull(kobold);
+    }
+
     @Test
     @DisplayName("Deve testar os calculos envolvendo o Barbaro")
     public void testaBarbaro() {
