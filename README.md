@@ -61,6 +61,7 @@ Observação: Subir seu projeto juntamente com os prints.
 
 Parte 1
 - Você deverá tirar um print screen do seu projeto no Github sem nenhuma tag.
+![](https://github.com/rodrigocloureiro/java_maven/blob/main/prints/Parte1_1.png)
 - Crie uma branch do seu projeto chamada logs.
 - Utilize o logback para substituir os System outs do seu projeto por mensagens de log.
 - Utilize pelo menos uma mensagem em cada Level -> info, debug e error.
@@ -71,6 +72,7 @@ Parte 2
 - Utilizando o Junit5 crie testes para o seu projeto.
 - Utilize pelo menos uma assertion do tipo AssertThrows.
 - Utilize o plugin Surefire para rodar os testes via Maven.(Commitar o print no github do relatório de execução).
+![](https://github.com/rodrigocloureiro/java_maven/blob/main/prints/Parte2_3.png)
 
 Parte 3
 - Gere uma Tag com a nova versão do seu projeto incluindo tudo que foi feito até aqui e suba essa tag para o Github.
